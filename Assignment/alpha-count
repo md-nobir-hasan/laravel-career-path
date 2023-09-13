@@ -1,1 +1,33 @@
 <?php
+
+function str_alpha_count($text)
+{
+    $count = 0;
+    for (
+        $i = 0;
+        $i < strlen($text);
+        $i++
+    ) {
+        if (ctype_alpha($text[$i])) {
+            $count++;
+        }
+    }
+    return $count;
+}
+
+$arga = getopt('', ['ac::']);
+$text = $arga['ac'] ?? ($argv[1] ?? null);
+
+if(!$text){
+    $opt = readline('Are you want to count alphabet of your text (yes/no): ');
+    if ($opt == 'yes') {
+        $text = readline('Please write your text:');
+        printf(str_alpha_count(text: $text));
+    }
+}else{
+    printf(str_alpha_count(text: $text));
+}
+
+
+
+
